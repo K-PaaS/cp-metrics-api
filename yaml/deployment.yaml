@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: metric-collector
+  name: metric-collector
+spec:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+          - matchExpressions:
+              - key: node-role.kubernetes.io/control-plane
+                operator: Exists
+  containers:
+    - image: 15.164.195.107:30002/suslmk/metric-collector
+      imagePullPolicy: Always
+      name: metric-collector
+      env:
+        - name: PROFILE
+          value: "prod"
+        - name: DATABASE_URL
+          value: "cp-mariadb.mariadb.svc.cluster.local:3306"
+        - name: DATABASE_NAME
+          value: "cp"
+        - name: DATABASE_TERRAMAN_ID
+          value: "terraman"
+        - name: DATABASE_TERRAMAN_PASSWORD
+          value: "Paasta!2022"
+        - name: VAULT_ADDR
+          value: "http://3.38.254.89:8200"
+        - name: VAULT_ROLE_ID
+          value: "46e31feb-a650-69c1-1e2b-81a6bd04de2b"
+        - name: VAULT_SECRET_ID
+          value: "8e5f9eda-db29-7cb6-fd55-cb6b530a8c0e"
+  nodeSelector:
+    kubernetes.io/hostname: ip-10-0-0-63

@@ -1,0 +1,241 @@
+definitions:
+  model.ClusterItems:
+    properties:
+      clusterId:
+        type: string
+      clusterName:
+        type: string
+      clusterProviderType:
+        type: string
+      namespaceCount:
+        $ref: '#/definitions/model.NamespaceCount'
+      nodeCount:
+        $ref: '#/definitions/model.NodeCount'
+      podCount:
+        $ref: '#/definitions/model.PodCount'
+      pvCount:
+        $ref: '#/definitions/model.PvCount'
+      pvcCount:
+        $ref: '#/definitions/model.PvcCount'
+      usage:
+        $ref: '#/definitions/model.Usage'
+      version:
+        type: string
+    type: object
+  model.Cpu:
+    properties:
+      percent:
+        type: integer
+      usage:
+        type: integer
+    type: object
+  model.DashboardResult:
+    properties:
+      clusterStatus:
+        type: integer
+      detailMessage:
+        type: string
+      httpStatusCode:
+        type: integer
+      itemMetaData:
+        type: string
+      items:
+        items:
+          $ref: '#/definitions/model.ClusterItems'
+        type: array
+      namespaceStatus:
+        type: integer
+      podStatus:
+        type: integer
+      pvStatus:
+        type: integer
+      pvcStatus:
+        type: integer
+      resultCode:
+        type: string
+      resultMessage:
+        type: string
+      topNodeCPU:
+        items:
+          $ref: '#/definitions/model.TopNodeCPU'
+        type: array
+      topNodeMem:
+        items:
+          $ref: '#/definitions/model.TopNodeMEM'
+        type: array
+    type: object
+  model.Memory:
+    properties:
+      percent:
+        type: integer
+      usage:
+        type: integer
+    type: object
+  model.NamespaceCount:
+    properties:
+      all:
+        type: integer
+      count:
+        type: integer
+    type: object
+  model.NodeCount:
+    properties:
+      all:
+        type: integer
+      count:
+        type: integer
+    type: object
+  model.NodeStateInfo:
+    properties:
+      clusterId:
+        type: string
+      cpuRatio:
+        type: number
+      memRatio:
+        type: number
+      nodeName:
+        type: string
+      updateTime:
+        type: string
+    type: object
+  model.PodCount:
+    properties:
+      all:
+        type: integer
+      count:
+        type: integer
+    type: object
+  model.PvCount:
+    properties:
+      all:
+        type: integer
+      count:
+        type: integer
+    type: object
+  model.PvcCount:
+    properties:
+      all:
+        type: integer
+      count:
+        type: integer
+    type: object
+  model.ResponsePing:
+    properties:
+      cluster_id:
+        type: string
+      status_code:
+        type: integer
+    type: object
+  model.TopNodeCPU:
+    properties:
+      clusterId:
+        type: string
+      clusterName:
+        type: string
+      cpu:
+        $ref: '#/definitions/model.Cpu'
+      memory:
+        $ref: '#/definitions/model.Memory'
+      name:
+        type: string
+    type: object
+  model.TopNodeMEM:
+    properties:
+      clusterId:
+        type: string
+      clusterName:
+        type: string
+      cpu:
+        $ref: '#/definitions/model.Cpu'
+      memory:
+        $ref: '#/definitions/model.Memory'
+      name:
+        type: string
+    type: object
+  model.Usage:
+    properties:
+      cpu:
+        type: number
+      memory:
+        type: number
+    type: object
+info:
+  contact:
+    email: support@swagger.io
+    name: API Support
+    url: http://www.swagger.io/support
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: MetricCollector API
+  version: 0.1.0
+paths:
+  /v1/metrics/cluster/dashboard:
+    get:
+      consumes:
+      - application/json
+      description: It is created according to the IaaS information requested when
+        creating the cluster.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.DashboardResult'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/model.DashboardResult'
+      summary: Create model.DashboardResult
+  /v1/metrics/cluster/node:
+    get:
+      consumes:
+      - application/json
+      description: It is created according to the IaaS information requested when
+        creating the cluster.
+      parameters:
+      - description: Node State Info
+        in: body
+        name: iaasBody
+        required: true
+        schema:
+          $ref: '#/definitions/model.NodeStateInfo'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.NodeStateInfo'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/model.NodeStateInfo'
+      summary: Create model.NodeStateInfo
+  /v1/metrics/cluster/ping/{clusterId}:
+    get:
+      consumes:
+      - application/json
+      description: It is function that returns the cluster state.
+      parameters:
+      - description: Infomation of ClusterID
+        in: body
+        name: ResponsePing
+        required: true
+        schema:
+          $ref: '#/definitions/model.ResponsePing'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.ResponsePing'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/model.ResponsePing'
+      summary: Create model.ResponsePing
+swagger: "2.0"
