@@ -26,7 +26,7 @@ spec:
         - name: DATABASE_TERRAMAN_ID
           value: "terraman"
         - name: DATABASE_TERRAMAN_PASSWORD
-          value: "Paasta!2022"
+          value: "KPaas!2022"
         - name: VAULT_ADDR
           value: "http://3.38.254.89:8200"
         - name: VAULT_ROLE_ID

@@ -22,6 +22,8 @@ RUN ls -al
 
 RUN go mod download
 
+RUN go mod tidy
+
 #COPY --from=itinance/swag /root/swag /usr/local/bin
 
 #RUN swag init
