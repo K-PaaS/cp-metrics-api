@@ -129,7 +129,7 @@ func NewVaultClient() (*Client, error) {
 	vaultClient := Client{}
 
 	client, err := api.NewClient(&api.Config{
-		Address: "http://" + vaultURL,
+		Address: vaultURL,
 	})
 
 	vaultClient.Client = client
