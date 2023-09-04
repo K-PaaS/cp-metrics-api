@@ -10,8 +10,7 @@ import (
 
 var (
 	leasePath = "secret/data/cluster/"
-	vaultIP   string
-	vaultPort string
+	vaultURL  string
 	roleId    string
 	secretId  string
 )
@@ -35,18 +34,16 @@ func readProperties() {
 	}
 
 	if profile == "prod" {
-		vaultIP = os.Getenv("VAULT_IP")
-		vaultPort = os.Getenv("VAULT_PORT")
+		vaultURL = os.Getenv("VAULT_URL")
 		roleId = os.Getenv("VAULT_ROLE_ID")
 		secretId = os.Getenv("VAULT_SECRET_ID")
 	} else {
-		vaultIP = common.ConfInfo["vault.server.address"]
-		vaultPort = common.ConfInfo["vault.server.port"]
+		vaultURL = common.ConfInfo["vault.server.url"]
 		roleId = common.ConfInfo["vault.id"]
 		secretId = common.ConfInfo["vault.secret.id"]
 	}
 
-	fmt.Printf("IP: %s  Port: %s role: xxxxxxxx  secret: xxxxxxxx\n", vaultIP, vaultPort)
+	fmt.Printf("URL: %s role: xxxxxxxx  secret: xxxxxxxx\n", vaultURL)
 }
 
 func GetSecretInfo(clusterId string) (map[string]interface{}, error) {
@@ -132,7 +129,7 @@ func NewVaultClient() (*Client, error) {
 	vaultClient := Client{}
 
 	client, err := api.NewClient(&api.Config{
-		Address: "http://" + vaultIP + ":" + vaultPort,
+		Address: "http://" + vaultURL,
 	})
 
 	vaultClient.Client = client
