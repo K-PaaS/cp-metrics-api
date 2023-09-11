@@ -43,7 +43,7 @@ func basicAuth(h http.HandlerFunc) http.HandlerFunc {
 			return
 		}
 
-		if pair[0] != "paasta" || pair[1] != "password" {
+		if pair[0] != "kpaas" || pair[1] != "password" {
 			http.Error(w, "Not authorized", 401)
 			return
 		}
