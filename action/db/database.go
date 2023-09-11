@@ -249,7 +249,7 @@ func getClusterItems(ctx context.Context, tx *sql.Tx, db *sql.DB, tableName stri
 }
 
 func GetTopCPU(targetId string) []model.TopNodeCPU {
-	//db, err := sql.Open("mysql", "terraman:Paasta!2022@(15.164.195.107:31306)/cpdev?parseTime=true")
+	//db, err := sql.Open("mysql", "terraman:KPaas!2022@(15.164.195.107:31306)/cpdev?parseTime=true")
 	//if err != nil {
 	//	log.Fatal(err)
 	//}
@@ -305,7 +305,7 @@ func GetTopCPU(targetId string) []model.TopNodeCPU {
 }
 
 func GetTopMem(targetId string) []model.TopNodeMEM {
-	//db, err := sql.Open("mysql", "terraman:Paasta!2022@(15.164.195.107:31306)/cpdev?parseTime=true")
+	//db, err := sql.Open("mysql", "terraman:KPaaS!2022@(15.164.195.107:31306)/cpdev?parseTime=true")
 	//if err != nil {
 	//	log.Fatal(err)
 	//}
