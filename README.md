@@ -1,92 +1,100 @@
-# kube-metric-api
+## Related Repositories
+
+<table>
+  <tr>
+    <td colspan=2 align=center>플랫폼</td>
+    <td colspan=2 align=center><a href="https://github.com/K-PaaS/cp-deployment">컨테이너 플랫폼</a></td>
+    <td colspan=2 align=center><a href="https://github.com/K-PaaS/sidecar-deployment">사이드카</a></td>
+    <td colspan=2 align=center><a href="https://github.com/K-PaaS/ap-deployment">어플리케이션 플랫폼</a></td>
+  </tr>
+  <tr>
+    <td colspan=2 align=center>포털</td>
+    <td colspan=2 align=center><a href="https://github.com/K-PaaS/cp-portal-release">CP 포털</a></td>
+    <td colspan=2 align=center>-</td>
+    <td colspan=2 align=center><a href="https://github.com/K-PaaS/portal-deployment">AP 포털</a></td>
+  </tr>
+  <tr align=center>
+    <td colspan=2 rowspan=9>Component<br>/ 서비스</td>
+    <td colspan=2><a href="https://github.com/K-PaaS/cp-portal-common-api">Common API</a></td>
+    <td colspan=2>-</td>
+    <td colspan=2><a href="https://github.com/K-PaaS/ap-mongodb-shard-release">MongoDB</a></td>
+  </tr>
+  <tr align=center>
+    <td colspan=2><a href="https://github.com/K-PaaS/cp-metrics-api">🚩Metric API</a></td>
+    <td colspan=2>  </td>
+    <td colspan=2><a href="https://github.com/K-PaaS/ap-mysql-release">MySQL</a></td>
+  </tr>
+  <tr align=center>
+    <td colspan=2><a href="https://github.com/K-PaaS/cp-portal-api">Portal API</a></td>
+    <td colspan=2>  </td>
+    <td colspan=2><a href="https://github.com/K-PaaS/ap-pipeline-release">Pipeline</a></td>
+  </tr>
+  <tr align=center>
+    <td colspan=2><a href="https://github.com/K-PaaS/cp-portal-ui">Portal UI</a></td>
+    <td colspan=2>  </td>
+    <td colspan=2><a href="https://github.com/K-PaaS/ap-rabbitmq-release">RabbintMQ</a></td>
+  </tr>
+  <tr align=center>
+    <td colspan=2><a href="https://github.com/K-PaaS/cp-portal-service-broker">Service Broker</a></td>
+    <td colspan=2>  </td>
+    <td colspan=2><a href="https://github.com/K-PaaS/ap-on-demand-redis-release">Redis</a></td>
+  </tr>
+  <tr align=center>
+    <td colspan=2><a href="https://github.com/K-PaaS/cp-terraman">Terraman API</a></td>
+    <td colspan=2>  </td>
+    <td colspan=2><a href="https://github.com/K-PaaS/ap-source-control-release">SoureceControl</a></td>
+  </tr>
+</table>
+
+<i>🚩 You are here.</i>
 
 
+<br>
 
-## Getting started
+## K-PaaS 컨테이너 플랫폼 Metric API
+K-PaaS 컨테이너 플랫폼의 관리 클러스터에 대한 Metrics 상태정보를 제공하는 REST API 입니다.
+- [시작하기](#시작하기)
+   - [컨테이너 플랫폼 Metrics API 빌드 방법](#컨테이너-플랫폼-metrics-api-빌드-방법)
+- [문서](#문서)
+- [개발 환경](#개발-환경)
+- [라이선스](#라이선스)
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+<br>
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+## 시작하기
+K-PaaS 컨테이너 플랫폼 Metrics API가 수행하는 애플리케이션 관리 작업은 다음과 같습니다.
+- 컨테이너 플랫폼 Cluster 리소스 현황 수집
+- 컨테이너 플랫폼 Cluster CPU/Memrory 현황 수집
+- 사용량 조회를 위한 RestAPI 제공
 
-## Add your files
-
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
-
+#### 컨테이너 플랫폼 Metrics API 빌드 방법
+K-PaaS 컨테이너 플랫폼 Metrics API 소스 코드를 활용하여 로컬 환경에서 빌드가 필요한 경우 다음 명령어를 입력합니다.
 ```
-cd existing_repo
-git remote add origin https://gitlab.203.255.255.117.nip.io/container-platform-v2/backend/kube-metric-api.git
-git branch -M main
-git push -uf origin main
+$ go build
 ```
 
-## Integrate with your tools
+<br>
 
-- [ ] [Set up project integrations](https://gitlab.203.255.255.117.nip.io/container-platform-v2/backend/kube-metric-api/-/settings/integrations)
+## 문서
+- 컨테이너 플랫폼 활용에 대한 정보는 [K-PaaS 컨테이너 플랫폼](https://github.com/K-PaaS/container-platform)을 참조하십시오.
 
-## Collaborate with your team
+<br>
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+## 개발 환경
+K-PaaS 컨테이너 플랫폼 Metrics API의 개발 환경은 다음과 같습니다.
 
-## Test and Deploy
+| Situation                      | Version |
+| ------------------------------ | ------- |
+| go                             | 1.18    |
+| go-resty                       | 2.7     |
+| go-sql-driver/mysql            | 1.6.0   |
+| gorilla/mux                    | 1.8.0   |
+| swaggo/http-swagger            | 1.3.3   |
+| swaggo/swag                    | 1.8.1   |
+| hashicorp/vault/api            | 1.7.2   |
+| gorm.io/gorm                   | 1.23.8  |
 
-Use the built-in continuous integration in GitLab.
+<br>
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
-
-***
-
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!).  Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+## 라이선스
+K-PaaS 컨테이너 플랫폼 Metrics API는 [Apache-2.0 License](http://www.apache.org/licenses/LICENSE-2.0)를 사용합니다.
