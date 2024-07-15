@@ -17,6 +17,7 @@ require (
 )
 
 require (
+	czechia.dev/probes v1.2.0 // indirect
 	github.com/KyleBanks/depth v1.2.1 // indirect
 	github.com/armon/go-metrics v0.3.10 // indirect
 	github.com/armon/go-radix v1.0.0 // indirect
