@@ -73,6 +73,15 @@ K-PaaS 컨테이너 플랫폼 Metrics API 소스 코드를 활용하여 로컬 �
 $ go build
 ```
 
+#### 컨테이너 플랫폼 환경에서 컨테이너 이미지 빌드하고 HarborRepository에 업로드하는 방법
+```shell
+## image build
+$ sudo podman build -t harbor.{HarborRepositoryIP}.nip.io/cp-portal-repository/cp-portal-metric-api .
+
+# image push to harbor
+$ sudo podman push harbor.{HarborRepositoryIP}.nip.io/cp-portal-repository/cp-portal-metric-api:latest
+```
+
 <br>
 
 ## 문서

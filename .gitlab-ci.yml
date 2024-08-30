@@ -1,72 +1,18 @@
-image: golang:latest
+include:
+  - project: '$MANAGED_PROJECT'
+    ref: '$MANAGED_PROJECT_REF'
+    file: '/.gitlab-ci/.build-template.yml'
+  - project: '$MANAGED_PROJECT'
+    ref: '$MANAGED_PROJECT_REF'
+    file: '/.gitlab-ci/.deploy-template.yml'
 
-variables:
-  # Please edit to your GitLab project
-  REPO_NAME: gitlab.com/namespace/project
-
-# The problem is that to be able to use go get, one needs to put
-# the repository in the $GOPATH. So for example if your gitlab domain
-# is gitlab.com, and that your repository is namespace/project, and
-# the default GOPATH being /go, then you'd need to have your
-# repository in /go/src/gitlab.com/namespace/project
-# Thus, making a symbolic link corrects this.
-before_script:
-  - echo $GOPATH
-  - echo $REPO_NAME
-  - mkdir -p "$GOPATH/src/$(dirname $REPO_NAME)"
-  - ln -svf "$CI_PROJECT_DIR" "$GOPATH/src/$REPO_NAME"
-  - cd "$GOPATH/src/$REPO_NAME"
-  - pwd
+workflow:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "web"'
+      when: always
+    - when: never
 
 stages:
   - build
-  - docker
+  - image_build
   - deploy
-
-compile:
-  stage: build
-  script:
-    - go mod tidy
-    - ls -al
-    - go mod download
-    - go fmt $(go list ./... | grep -v /vendor/)
-    - go get $(go list ./... | grep -v /vendor/)
-    - go get -t terraman/app
-    - go vet $(go list ./... | grep -v /vendor/)
-    - go build -race -ldflags "-extldflags '-static'" -o $CI_PROJECT_DIR/mybinary
-  artifacts:
-    paths:
-      - build
-
-docker build:
-  stage: docker
-  image:
-    name: gcr.io/kaniko-project/executor:debug # kaniko image 사용
-    entrypoint: [""]
-  script:
-    - export 
-    - pwd 
-    - ls 
-    - echo $HARBOR_URL 
-    - echo $HARBOR_USERNAME 
-    - echo $HARBOR_PASSWORD 
-    - echo $IMAGE_TAGS 
-    - echo $HARBOR_HOST 
-    - rm -rf /kaniko/.docker 
-    - mkdir -p /kaniko/.docker
-    #- echo "{\"auths\":{\"${CI_REGISTRY}\":{\"auth\":\"$(printf "%s:%s" "${CI_REGISTRY_USER}" "${CI_REGISTRY_PASSWORD}" | base64 | tr -d '\n')\"}}}" > /kaniko/.docker/config.json
-    - echo "{\"auths\":{\"http://115.68.198.174:30002/\":{\"auth\":\"$(echo -n admin:Harbor12345 | base64)\"}}}" > /kaniko/.docker/config.json
-    - cat /kaniko/.docker/config.json 
-    #- cat /kaniko/.docker/config.json config.json 확인
-    #- | # ssl cert key 입력
-    #  echo "${GITLAB_CERT_KEY}" >> /kaniko/ssl/certs/additional-ca-cert-bundle.crt
-    - >- # build image
-      /kaniko/executor
-      --context "${CI_PROJECT_DIR}"
-      --dockerfile "${CI_PROJECT_DIR}/Dockerfile"
-      --destination "115.68.198.174:30002/cp-portal-repository/cp-portal-metric-api:${IMAGE_TAGS}"
-      --insecure 
-  cache:
-    key: "$CI_COMMIT_REF_NAME"
-    paths:
-      - build
