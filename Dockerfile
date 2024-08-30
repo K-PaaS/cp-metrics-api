@@ -30,6 +30,9 @@ RUN go mod tidy
 
 RUN go build -o main .
 
+# Check if properties files exist, if not create metric.properties
+RUN if [ -z "$(ls /build/*.properties 2>/dev/null)" ]; then touch /build/metric.properties; fi
+
 WORKDIR /dist
 
 RUN cp /build/main .
