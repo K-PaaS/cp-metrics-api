@@ -1,6 +1,6 @@
 module kube-metric-collector
 
-go 1.18
+go 1.21
 
 require (
 	github.com/aobt/sqlmapper v0.0.0-20200910061331-bc0477404178
