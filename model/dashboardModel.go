@@ -19,6 +19,7 @@ type DashboardResult struct {
 type ClusterItems struct {
 	ClusterId           string         `json:"clusterId"`
 	ClusterName         string         `json:"clusterName"`
+	ClusterType         string         `json:"clusterType"`
 	ClusterProviderType string         `json:"clusterProviderType"`
 	Version             string         `json:"version"`
 	NodeCount           NodeCount      `json:"nodeCount"`
@@ -85,7 +86,7 @@ type Memory struct {
 	Percent int `json:"percent"`
 }
 
-//table cp_metric_cluster_status
+// table cp_metric_cluster_status
 type TableClusterStatus struct {
 	ClusterId      string  `sql:"cluster_id"`
 	KubeletVersion string  `sql:"kubelet_version"`

@@ -3,16 +3,16 @@
 <table>
 <thead>
   <tr>
-    <th>플랫폼</th>
-    <th><a href="https://github.com/K-PaaS/cp-deployment">컨테이너 플랫폼</a></th>
-    <th>&nbsp;&nbsp;&nbsp;<a href="https://github.com/K-PaaS/sidecar-deployment.git">사이드카</a>&nbsp;&nbsp;&nbsp;</th>
+    <th style="text-align:center;width=100;">플랫폼</th>
+    <th style="text-align:center;width=250;"><a href="https://github.com/K-PaaS/cp-deployment">컨테이너 플랫폼</a></th>
+    <th style="text-align:center;width=250;">&nbsp;&nbsp;&nbsp;<a href="https://github.com/K-PaaS/sidecar-deployment.git">사이드카</a>&nbsp;&nbsp;&nbsp;</th>
   </tr>
 </thead>
 <tbody>
   <tr>
     <td align="center">포털</td>
     <td align="center"><a href="https://github.com/K-PaaS/cp-portal-release">CP 포털</a></td>
-    <td align="center">-</td>
+    <td align="center"><a href="https://github.com/K-PaaS/sidecar-deployment/tree/master/install-scripts/portal">사이드카 포털</a></td>
   </tr>
   <tr>
     <td rowspan="8">Component <br>/서비스</td>
@@ -28,7 +28,7 @@
     <td align="center"></td>
   </tr>
   <tr>
-    <td align="center"><a href="https://github.com/K-PaaS/cp-metrics-api">🚩Metric API</a></td>
+    <td align="center"><a href="https://github.com/K-PaaS/cp-metrics-api">🚩 Metric API</a></td>
     <td align="center"></td>
   </tr>
   <tr>
@@ -48,9 +48,9 @@
     <td align="center"></td>
   </tr>
 </tbody></table>
-
 <i>🚩 You are here.</i>
 
+<br>
 <br>
 
 ## K-PaaS 컨테이너 플랫폼 Metric API
@@ -98,14 +98,14 @@ K-PaaS 컨테이너 플랫폼 Metrics API의 개발 환경은 다음과 같습�
 
 | Situation                      | Version |
 | ------------------------------ | ------- |
-| go                             | 1.18    |
-| go-resty                       | 2.7     |
-| go-sql-driver/mysql            | 1.6.0   |
-| gorilla/mux                    | 1.8.0   |
-| swaggo/http-swagger            | 1.3.3   |
-| swaggo/swag                    | 1.8.1   |
-| hashicorp/vault/api            | 1.7.2   |
-| gorm.io/gorm                   | 1.23.8  |
+| go                             | 1.24    |
+| go-resty                       | 2.16.5  |
+| go-sql-driver/mysql            | 1.9.0   |
+| gorilla/mux                    | 1.8.1   |
+| swaggo/http-swagger            | 1.3.4   |
+| swaggo/swag                    | 1.16.4  |
+| hashicorp/vault/api            | 1.16.0  |
+| gorm.io/gorm                   | 1.25.12 |
 
 <br>
 

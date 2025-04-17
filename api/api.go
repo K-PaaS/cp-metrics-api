@@ -136,6 +136,11 @@ func getDashboardData(wr http.ResponseWriter, r *http.Request) {
 		}
 	}
 
+	if len(req.ClusterId) == 0 {
+		fmt.Println("ClusterId is empty...")
+		return
+	}
+
 	for i, clusterId := range req.ClusterId {
 		fmt.Println("request Cluster(", i+1, ") :: ", clusterId)
 	}

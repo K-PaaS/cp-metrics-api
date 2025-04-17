@@ -205,6 +205,7 @@ func getClusterItems(ctx context.Context, tx *sql.Tx, db *sql.DB, tableName stri
 
 		objs[i].ClusterId = row.ClusterId
 		objs[i].ClusterName = objptr.(*model.TableClusters).ClusterName
+		objs[i].ClusterType = objptr.(*model.TableClusters).ClusterType
 		objs[i].ClusterProviderType = objptr.(*model.TableClusters).ProviderType
 		objs[i].Version = clusterIdList[i].(*model.TableClusterStatus).KubeletVersion
 
